@@ -1,11 +1,17 @@
 #!/usr/bin/env ruby
 #
 # XMLMotor_EXECUTIONER ;)
-xml_motor_libs = File.join(File.dirname(File.expand_path __FILE__), 'xml-motor', '*.rb')
-Dir.glob(xml_motor_libs).each do |lib|
-  require lib
-end
-
+#xml_motor_libs = File.join(File.dirname(File.expand_path __FILE__), 'xml-motor', '*.rb')
+#Dir.glob(xml_motor_libs).each do |lib|
+#  require lib
+#end
+require_relative 'xml-motor/version'
+require_relative 'xml-motor/xml-chopper'
+require_relative 'xml-motor/xml-index-handler'
+require_relative 'xml-motor/xml-joiner'
+require_relative 'xml-motor/xml-motor-engine'
+require_relative 'xml-motor/xml-stdout'
+require_relative 'xml-motor/xml-utils'
 
 module XMLMotor
   def self.get_node_from_file(file, my_tag=nil, my_attrib=nil, with_tag=false)
