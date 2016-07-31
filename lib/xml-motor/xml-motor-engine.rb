@@ -41,7 +41,7 @@ module XMLMotorEngine
   def self._grab_my_node_ (index_to_find, attrib_to_find=nil, with_tag=false)
     attrib = XMLMotorEngine::AirFilter.expand_attrib_to_find(attrib_to_find)
     nodes = []
-    (0...index_to_find.size).step(2) do |ncount|
+    (0...index_to_find.size).each_slice(2) do |_, ncount|
       node_start, node_stop = index_to_find[ncount], index_to_find[ncount + 1]
       next if XMLMotorEngine::AirFilter.filter?(attrib,
                                                 @xmlnodes[node_start][0][1])
@@ -58,7 +58,7 @@ module XMLMotorEngine
     attrib = XMLMotorEngine::AirFilter.expand_attrib_to_find(attrib_to_find)
 
     attribs = []
-    (0...index_to_find.size).step(2) do |ncount|
+    (0...index_to_find.size).each_slice(2) do |_, ncount|
       node_start = index_to_find[ncount]
       next if XMLMotorEngine::AirFilter.filter?(attrib, @xmlnodes[node_start][0][1])
       attribs[ncount / 2] = XMLMotorEngine::AirFilter.if_exist_get_attrib(

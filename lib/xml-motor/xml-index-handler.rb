@@ -21,7 +21,7 @@ module XMLIndexHandler
 
   def self.expand_node_indexes(outer_idx, x_curr)
     expanded_node_indexes = []
-    (0...outer_idx.size).step(2) do |o|
+    (0...outer_idx.size).each_slice(2) do |_, o|
       o1, o2 = outer_idx[o], outer_idx[o + 1]
       expanded_node_indexes += node_indexes_in_range(x_curr, o1, o2)
     end
@@ -30,7 +30,7 @@ module XMLIndexHandler
 
   def self.node_indexes_in_range(x_curr, outer_open, outer_close)
     node_indexes = []
-    (0...x_curr.size).step(2) do |x|
+    (0...x_curr.size).each_slice(2) do |_, x|
       x1, x2 = x_curr[x], x_curr[x + 1]
       next if node_index_out_of_bound?(outer_open, outer_close, x1, x2)
       node_indexes.push x1, x2
