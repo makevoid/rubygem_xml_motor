@@ -1,7 +1,11 @@
 # XMLMotorEngine
 
-xml_motor_engine = File.join(File.dirname(File.expand_path __FILE__), 'xml-motor-engine', '*.rb')
-Dir.glob(xml_motor_engine).each{|parts| require parts }
+# xml_motor_engine = File.join(File.dirname(File.expand_path __FILE__), 'xml-motor-engine', '*.rb')
+# Dir.glob(xml_motor_engine).each{|parts| require parts }
+
+require_relative 'xml-motor-engine/xml-motor-airfilter'
+require_relative 'xml-motor-engine/xml-motor-exhaust'
+
 
 module XMLMotorEngine
   def self._splitter_(xmldata)
